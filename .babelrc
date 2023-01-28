@@ -10,5 +10,8 @@
       }
     ]
   ],
-  "plugins": ["@emotion/babel-plugin"]
+  "plugins": [
+    ["babel-plugin-less-for-styled-components", { "globalImports": ["less/proj.less"] }],
+    ["@emotion/babel-plugin"]
+  ]
 }

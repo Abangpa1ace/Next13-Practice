@@ -1,17 +1,35 @@
 "use client";
 
+import { Global, css } from '@emotion/react';
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import { PropsWithChildren } from 'react';
 
 function layout({ children }: PropsWithChildren<unknown>): JSX.Element {
   return (
-    <MainLayout>
-      <HomeHeader>
-        <Link href="/list">리스트</Link>
-      </HomeHeader>
-      <MainWrapper>{children}</MainWrapper>
-    </MainLayout>
+    <html lang="en">
+    <head>
+      <title>Practice</title>
+      <Global styles={css`
+        *, body { .m; .p; .-box; }
+        @media (max-width: 700px) {
+          html { font-size: 12px; }
+        }
+        
+        @media (min-width: 1400px) {
+          html { font-size: 20px; }
+        }
+      `}/>
+    </head>
+    <body>
+      <MainLayout>
+        <HomeHeader>
+          <Link href="/list">리스트</Link>
+        </HomeHeader>
+        <MainWrapper>{children}</MainWrapper>
+      </MainLayout>
+    </body>
+    </html>
   )
 }
 
