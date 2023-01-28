@@ -14,10 +14,8 @@ function layout({ children }: PropsWithChildren<unknown>): JSX.Element {
 }
 
 const Layout = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 60px;
-  border: 1px solid red;
+  .p(30); .-a(red); .mh-c; .max-w(1200);
+  h2 { .fs(50); }
 `
 
 export default layout
