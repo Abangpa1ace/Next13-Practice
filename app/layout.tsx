@@ -1,17 +1,29 @@
-"use client";
+'use client'
 
-import styled from '@emotion/styled';
 import Link from 'next/link';
-import { PropsWithChildren } from 'react';
+import styled from "styled-components";
 
-function layout({ children }: PropsWithChildren<unknown>): JSX.Element {
+import StyledComponentsRegistry from '../lib/registry';
+
+interface Props {
+  children: React.ReactNode;
+}
+
+function layout({ children }: Props): JSX.Element {
   return (
-    <MainLayout>
-      <HomeHeader>
-        <Link href="/list">리스트</Link>
-      </HomeHeader>
-      <MainWrapper>{children}</MainWrapper>
-    </MainLayout>
+    <html>
+      <body>
+        <StyledComponentsRegistry>
+          <MainLayout>
+            <MainHeader>
+              <NavItem href="/">메인</NavItem>
+              <NavItem href="/list">리스트</NavItem>
+            </MainHeader>
+            <MainWrapper>{children}</MainWrapper>
+          </MainLayout>
+        </StyledComponentsRegistry>
+      </body>
+    </html>
   )
 }
 
@@ -19,7 +31,7 @@ const MainLayout = styled.div`
   padding: 100px 20px 0;
 `;
 
-const HomeHeader = styled.header`
+const MainHeader = styled.header`
   position: fixed;
   left: 0;
   top: 0;
@@ -34,6 +46,15 @@ const HomeHeader = styled.header`
 const MainWrapper = styled.main`
   max-width: 1200px;
   margin: 0 auto;
+`;
+
+const NavItem = styled(Link)`
+  color: black;
+  text-decoration: none;
+
+  &:not(:first-of-type) {
+    margin-left: 15px;
+  }
 `;
 
 export default layout;

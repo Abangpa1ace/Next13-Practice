@@ -1,7 +1,9 @@
-"use client";
+'use client'
+
+import HomeData from "../components/home/HomeData";
 
 export default function Home() {
   return (
-    <div>홈 컨텐츠</div>
+    <><HomeData /></>
   )
 }
