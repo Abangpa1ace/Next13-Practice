@@ -1,16 +1,23 @@
 'use client'
 import styled from '@emotion/styled';
+import FormContainer from '../../components/form/shared/FormContainer';
 import InputText from '../../components/form/shared/inputs/InputText';
 
 function FormPage(): JSX.Element {
   return (
-      <Container>
+    <Container>
+      <FormContainer formId='my-form'>
         <InputText id="id" title="아이디" />
-      </Container>
+        <InputText id="password" title="비밀번호" />
+      </FormContainer>
+    </Container>
   )
 }
 
 const Container = styled.section`
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
   width: 550px;
   min-height: calc(100vh - 80px);
   margin: 0 auto;
