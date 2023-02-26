@@ -5,6 +5,7 @@ import Header from '../components/common/layout/Header';
 import '../styles/globals.css';
 
 import StyledComponentsRegistry from '../lib/registry';
+import { RecoilRoot } from 'recoil';
 
 interface Props {
   children: React.ReactNode;
@@ -16,8 +17,10 @@ function layout({ children }: Props): JSX.Element {
       <body>
         <StyledComponentsRegistry>
           <MainLayout>
-            <Header />
-            <MainWrapper>{children}</MainWrapper>
+            <RecoilRoot>
+              <Header />
+              <MainWrapper>{children}</MainWrapper>
+            </RecoilRoot>
           </MainLayout>
         </StyledComponentsRegistry>
       </body>

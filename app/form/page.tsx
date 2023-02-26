@@ -1,6 +1,6 @@
 'use client'
 import styled from '@emotion/styled';
-import FormContainer from '../../components/form/shared/FormContainer';
+import FormContainer from '../../components/form/shared/FormContainer/index';
 import InputText from '../../components/form/shared/inputs/InputText';
 
 function FormPage(): JSX.Element {

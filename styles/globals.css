@@ -8,3 +8,8 @@ body, * {
 label {
   cursor: pointer;
 }
+
+button, button:focus, button:active {
+  border: none;
+  outline: none;
+}
