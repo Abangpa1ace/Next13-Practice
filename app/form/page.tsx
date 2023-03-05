@@ -7,7 +7,7 @@ function FormPage(): JSX.Element {
   return (
     <Container>
       <FormContainer formId='my-form'>
-        <InputText id="id" title="아이디" />
+        <InputText id="id" title="아이디" errors={['required', 'rgxLwrNum']}/>
         <InputText id="password" title="비밀번호" />
       </FormContainer>
     </Container>
