@@ -1,7 +1,7 @@
 'use client';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { ChangeEvent, InputHTMLAttributes, useState } from 'react';
+import { ChangeEvent, InputHTMLAttributes, useEffect, useRef, useState } from 'react';
 import { InputKeyName, InputKeys } from '../../../../constants/form';
 import { handleError } from '../../../../utils/error';
 import FormerItem from '../FormerItem';
@@ -12,11 +12,10 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   errors?: ErrorTypeKey[];
 }
 
-function InputText({
+function InputPassword({
   id,
   title,
   errors,
-  type,
   ...resetProps
 }: Props): JSX.Element {
   const [error, setError] = useState<ErrorTypeData>(null);
@@ -31,9 +30,14 @@ function InputText({
     setError(handleError(value, errors))
   } 
 
+  console.log(Array.from(document.getElementsByTagName('input')).map(({ name }) => { name }))
+
   return (
     <FormerItem id={id} title={title || InputKeyName[id]} errorData={error}>
-      <Input type={type || 'text'} name={id} onBlur={handleBlur} {...resetProps} />
+      <>
+        <Input type="password" name={id} onBlur={handleBlur} {...resetProps} />
+        <input type="checkbox" />
+      </>
     </FormerItem>
   )
 }
@@ -56,4 +60,4 @@ const Input = styled.input<{ isError?: boolean }>`
   `}
 `;
 
-export default InputText
+export default InputPassword

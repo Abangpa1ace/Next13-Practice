@@ -1,6 +1,7 @@
 'use client'
 import styled from '@emotion/styled';
 import FormerContainer from '../../components/form/shared/FormerContainer';
+import InputPassword from '../../components/form/shared/inputs/InputPassword';
 import InputText from '../../components/form/shared/inputs/InputText';
 
 function FormPage(): JSX.Element {
@@ -8,8 +9,9 @@ function FormPage(): JSX.Element {
     <Container>
       <FormerContainer formId='my-form'>
         <InputText id="id" errors={['required', 'allowLwrNum']}/>
-        <InputText type="password" id="password" errors={['required', 'needUprLwrNumChr']} />
-        <InputText type="email" id="email" errors={['required', 'email']} />
+        <InputPassword id="password" errors={['required', 'needUprLwrNumChr']} />
+        <InputPassword id="passwordConfirm" errors={['required', 'needUprLwrNumChr']} />
+        <InputText id="email" type="email" errors={['required', 'email']} />
       </FormerContainer>
     </Container>
   )

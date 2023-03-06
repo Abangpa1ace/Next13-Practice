@@ -1,38 +1,31 @@
 'use client';
-import { cloneElement, InputHTMLAttributes, PropsWithChildren, ReactElement, useEffect, useMemo, useState } from 'react';
-import { InputKeys, InputKeyName } from '../../../constants/form';
+import { cloneElement, ReactElement, useMemo } from 'react';
+import { InputKeys } from '../../../constants/form';
 import styled from '@emotion/styled';
 import ErrorMessage from './ErrorMessage';
 import TitleLabel from './views/TitleLabel';
-import { handleError } from '../../../utils/error';
+
 
 interface Props {
   children: ReactElement;
-  value: string;
   id: InputKeys;
   title?: string;
-  errors?: ErrorTypeKey[];
+  errorData?: ErrorTypeData;
 }
 
-const FormerItem = ({ children, value, id, title, errors }: Props) => {
-  const [error, setError] = useState<ErrorTypeData>(null);
-  const isError = useMemo(() => error?.valid === false, [error]);
-
-  useEffect(() => {
-    setError(handleError(value, errors))
-  }, [value, errors])
-
+const FormerItem = ({ children, id, title, errorData }: Props) => {
+  const isError = useMemo(() => errorData?.valid === false, [errorData]);
   return (
-    <Wrapper>
-      <TitleLabel htmlFor={id}>{title || InputKeyName[id]}</TitleLabel>
+    <ItemWrapper>
+      <TitleLabel htmlFor={id}>{title}</TitleLabel>
       {cloneElement(children, { id, isError })}
-      <ErrorMessage isShow={isError} message={error?.message} />
-    </Wrapper>
+      <ErrorMessage isShow={isError} message={errorData?.message} />
+    </ItemWrapper>
   )
 }
 
-const Wrapper = styled.div`
-
+const ItemWrapper = styled.div`
+  position: relative;
 `
 
 export default FormerItem;
