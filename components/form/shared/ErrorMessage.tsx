@@ -1,13 +1,13 @@
 import styled from '@emotion/styled';
 
 type Props = {
-  message?: string;
   isShow?: boolean;
+  message?: string;
 }
 
 function ErrorMessage({ isShow, message }: Props) {
   if (!isShow || !message) return null;
-
+  
   return (
     <Message>{message}</Message>
   )

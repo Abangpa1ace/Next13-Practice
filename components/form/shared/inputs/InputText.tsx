@@ -1,43 +1,42 @@
 'use client';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, InputHTMLAttributes, useState } from 'react';
 import { InputKeyName, InputKeys } from '../../../../constants/form';
 import { handleError } from '../../../../utils/error';
 import ErrorMessage from '../ErrorMessage';
+import FormerItem from '../FormerItem';
 import TitleLabel from '../views/TitleLabel';
 
-type Props = {
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
   id: InputKeys;
   title?: string;
-  errors?: ErrorKey[];
+  errors?: ErrorTypeKey[];
 }
 
 function InputText({
   id,
   title,
   errors,
+  type,
+  ...resetProps
 }: Props): JSX.Element {
-  const [error, setError] = useState<ErrorInfo>(null);
+  const [value, setValue] = useState('');
 
   const handleErrorOnChange = (value: string) => {
     setError(handleError(value, errors))
+    // if (!!error) setError(handleError(value, errors))
   }
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { target: { name, value } } = e;
-
-    handleErrorOnChange(value);
+    setValue(value);
   }
 
   return (
-    <Wrapper>
-      <TitleLabel htmlFor={id}>
-        {title || InputKeyName[id]}
-      </TitleLabel>
-      <Input type="text" id={id} name={id} onChange={handleChange} isError={error?.valid === false} />
-      <ErrorMessage isShow={error?.valid === false} message={error?.message} />
-    </Wrapper>
+    <FormerItem value={value} id={id} errors={errors}>
+      <Input type={type || 'text'} id={id} name={id} onChange={handleChange} isError={error?.valid === false} {...resetProps} />
+    </FormerItem>
   )
 }
 

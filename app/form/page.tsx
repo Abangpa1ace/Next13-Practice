@@ -1,15 +1,16 @@
 'use client'
 import styled from '@emotion/styled';
-import FormContainer from '../../components/form/shared/FormContainer/index';
+import FormerContainer from '../../components/form/shared/FormerContainer';
 import InputText from '../../components/form/shared/inputs/InputText';
 
 function FormPage(): JSX.Element {
   return (
     <Container>
-      <FormContainer formId='my-form'>
-        <InputText id="id" title="아이디" errors={['required', 'rgxLwrNum']}/>
-        <InputText id="password" title="비밀번호" />
-      </FormContainer>
+      <FormerContainer formId='my-form'>
+        <InputText id="id" errors={['required', 'allowLwrNum']}/>
+        <InputText type="password" id="password" errors={['required', 'needUprLwrNumChr']} />
+        <InputText type="email" id="email" errors={['required', 'email']} />
+      </FormerContainer>
     </Container>
   )
 }
