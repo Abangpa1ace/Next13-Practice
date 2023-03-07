@@ -5,6 +5,7 @@ type ErrorTypeKey =
   | 'allowLwrNum'
   | 'needUprLwrNumChr'
   | 'email'
+  | 'equalPassword'
 
 type ErrorTypeKeyObject<R> = {
   [K in ErrorTypeKey]: R;

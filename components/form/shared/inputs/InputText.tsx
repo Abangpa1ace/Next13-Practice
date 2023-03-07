@@ -1,15 +1,12 @@
 'use client';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { ChangeEvent, InputHTMLAttributes, useState } from 'react';
-import { InputKeyName, InputKeys } from '../../../../constants/form';
+import { ChangeEvent, useState } from 'react';
+import { InputKeyName } from '../../../../constants/form';
 import { handleError } from '../../../../utils/error';
 import FormerItem from '../FormerItem';
 
-interface Props extends InputHTMLAttributes<HTMLInputElement> {
-  id: InputKeys;
-  title?: string;
-  errors?: ErrorTypeKey[];
+interface InputTextProps extends FormerInputProps {
 }
 
 function InputText({
@@ -18,12 +15,12 @@ function InputText({
   errors,
   type,
   ...resetProps
-}: Props): JSX.Element {
+}: InputTextProps): JSX.Element {
   const [error, setError] = useState<ErrorTypeData>(null);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { target: { value } } = e;
-    setError(handleError(value, errors))
+    if (error) setError(handleError(value, errors))
   }
 
   const handleBlur = (e: ChangeEvent<HTMLInputElement>) => {
@@ -33,7 +30,7 @@ function InputText({
 
   return (
     <FormerItem id={id} title={title || InputKeyName[id]} errorData={error}>
-      <Input type={type || 'text'} name={id} onBlur={handleBlur} {...resetProps} />
+      <Input type={type || 'text'} name={id} onChange={handleChange} onBlur={handleBlur} {...resetProps} />
     </FormerItem>
   )
 }
