@@ -1,5 +1,15 @@
-*, body {
+body, * {
   margin: 0;
   padding: 0;
+  color: #141719;
   box-sizing: border-box;
+}
+
+label {
+  cursor: pointer;
+}
+
+button, button:focus, button:active {
+  border: none;
+  outline: none;
 }
