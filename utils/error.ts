@@ -5,7 +5,7 @@ export const handlerObject: ErrorTypeKeyObject<(value: string, payload?: any) =>
   minLength: (value, length) => value.length >= length,
   maxLength: (value, length) => value.length <= length,
   allowLwrNum: (value) => /^[a-z0-9]*$/.test(value),
-  needUprLwrNumChr: (value) => /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(value),
+  needUprLwrNumChr: (value) => /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/.test(value),
   email: (value) => /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i.test(value),
   equalPassword: (value) => {
     const passwordValue = Array.from(document.getElementsByTagName('input')).find(input => input.name === 'password')?.value;
