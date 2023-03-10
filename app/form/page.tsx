@@ -11,7 +11,7 @@ function FormPage(): JSX.Element {
       <FormerContainer formId='my-form'>
         <InputText id="id" errors={['required', 'allowLwrNum']}/>
         <InputPassword id="password" errors={['required', 'needUprLwrNumChr']} useToggleReveal />
-        <InputPassword id="passwordConform" errors={['required', 'needUprLwrNumChr', 'equalPassword']} useToggleReveal />
+        <InputPassword id="passwordConfirm" errors={['required', 'needUprLwrNumChr', 'equalPassword']} useToggleReveal />
         <InputText id="email" type="email" errors={['required', 'email']} />
         <SingleCheck id="agreeCondition" label="필수 정보 활용에 동의해주세요." />
       </FormerContainer>
