@@ -30,7 +30,7 @@ function layout({ children }: Props): JSX.Element {
 
 const MainLayout = styled.div`
   min-height: 100vh;
-  background-color: #e7e7e7;
+  background-color: #f5f5f5;
   padding: 60px 20px 0;
 `;
 

@@ -35,6 +35,8 @@ function InputText({
   )
 }
 
+<<<<<<< HEAD
+=======
 const Input = styled.input<{ isError?: boolean }>`
   width: 100%;
   height: 40px;
@@ -56,4 +58,5 @@ const Input = styled.input<{ isError?: boolean }>`
 >>>>>>> ee940ad43e5b624225edb0082b8f1ba41d435896
 `;
 
+>>>>>>> main
 export default InputText
