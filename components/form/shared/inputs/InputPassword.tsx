@@ -5,18 +5,21 @@ import { ChangeEvent, useState } from 'react';
 import { InputKeyName } from '../../../../constants/form';
 import { handleError } from '../../../../utils/error';
 import FormerItem from '../FormerItem';
+import Checkbox from '../../../common/Checkbox';
 
-interface InputTextProps extends FormerInputProps {
+interface InputPasswordProps extends FormerInputProps {
+  useToggleReveal?: boolean;
 }
 
-function InputText({
+function InputPassword({
   id,
   title,
   errors,
-  type,
+  useToggleReveal = false,
   ...resetProps
-}: InputTextProps): JSX.Element {
+}: InputPasswordProps): JSX.Element {
   const [error, setError] = useState<ErrorTypeData>(null);
+  const [inputType, setInputType] = useState<'password' | 'text'>('password');
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { target: { value } } = e;
@@ -28,9 +31,14 @@ function InputText({
     setError(handleError(value, errors))
   } 
 
+  const handleToggleRevealPassword = (value: boolean) => {
+    setInputType(value ? 'text' : 'password');
+  }
+
   return (
     <FormerItem id={id} title={title || InputKeyName[id]} errorData={error}>
-      <Input type={type || 'text'} name={id} onChange={handleChange} onBlur={handleBlur} {...resetProps} />
+      <Input type={inputType} name={id} onChange={handleChange} onBlur={handleBlur} {...resetProps} />
+      {useToggleReveal ? <Checkbox id={id} label="비밀번호 표시" onChecked={handleToggleRevealPassword} style={{ position: 'absolute', top: 0, right: 0 }} /> : null}
     </FormerItem>
   )
 }
@@ -47,13 +55,10 @@ const Input = styled.input<{ isError?: boolean }>`
     outline: none !important;
     border: 2px solid #b581de;
   }
-<<<<<<< HEAD
-=======
 
   ${({ isError }) => isError && css`
     border: 2px solid #f77465 !important; 
   `}
->>>>>>> ee940ad43e5b624225edb0082b8f1ba41d435896
 `;
 
-export default InputText
+export default InputPassword
