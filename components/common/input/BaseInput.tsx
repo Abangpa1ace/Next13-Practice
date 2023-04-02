@@ -14,10 +14,10 @@ const BaseInput = ({
   hasError,
   ...restProps
 }: InputProps) => {
-  return <Input type={type} as={as} hasError={!!hasError} {...restProps} />
+  return <BaseInput_Styled type={type} as={as} hasError={!!hasError} {...restProps} />
 }
 
-const Input = styled.input<{ hasError: boolean }>`
+export const BaseInput_Styled = styled.input<{ hasError?: boolean }>`
   width: 100%;
   height: 40px;
   padding: 0 10px;

@@ -10,11 +10,12 @@ interface Props {
   id: InputKeys;
   title?: string;
   errorData?: ErrorTypeData;
+  errorMessage?: string;
 }
 
-const FormerItem = ({ children, id, title, errorData }: Props) => {
+const FormerItem = ({ children, id, title, errorData, errorMessage }: Props) => {
   const isMultipleChildren = useMemo(() => Array.isArray(children), [children]);
-  const isError = useMemo(() => errorData?.valid === false, [errorData]);
+  const isError = !!errorMessage;
 
   return (
     <ItemWrapper>
@@ -23,7 +24,7 @@ const FormerItem = ({ children, id, title, errorData }: Props) => {
         ? Children.map(children, child => !child ? null : cloneElement(child, { isError }))
         : cloneElement(children as ReactElement, { isError })
       }
-      <ErrorMessage isShow={isError} message={errorData?.message} />
+      <ErrorMessage isShow={isError} message={errorMessage} />
     </ItemWrapper>
   )
 }

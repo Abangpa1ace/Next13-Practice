@@ -8,11 +8,11 @@ import SingleCheck from '../../components/form/shared/inputs/SingleCheck';
 function FormPage(): JSX.Element {
   return (
     <Container>
-      <FormerContainer formId='my-form'>
+      <FormerContainer>
         <InputText id="id" errors={['required', 'allowLwrNum']}/>
-        <InputPassword id="password" errors={['required', 'needUprLwrNumChr']} useToggleReveal />
-        <InputPassword id="passwordConfirm" errors={['required', 'needUprLwrNumChr', 'equalPassword']} useToggleReveal />
-        <InputText id="email" type="email" errors={['required', 'email']} />
+        <InputText id="email" errors={['required', 'email']} />
+        <InputText id="password" errors={['required', 'minLength']} />
+        <InputText id="name" errors={['required']}/>
         <SingleCheck id="agreeCondition" label="필수 정보 활용에 동의해주세요." />
       </FormerContainer>
     </Container>
