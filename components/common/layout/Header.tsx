@@ -6,8 +6,8 @@ function Header(): JSX.Element {
   return (
     <HeaderContainer>
       <NavItem href="/">메인</NavItem>
+      <NavItem href="/hook-form">HookForm</NavItem>
       <NavItem href="/formik">Formik</NavItem>
-      <NavItem href="/hook-form">ReactHookForm</NavItem>
       <NavItem href="/form">커스텀폼</NavItem>
       <NavItem href="/list">리스트</NavItem>
     </HeaderContainer>

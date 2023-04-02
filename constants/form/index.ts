@@ -4,6 +4,7 @@ export const InputKeyName = {
   passwordConfirm: '비밀번호 확인',
   email: '이메일',
   agreeCondition: '필수정보 동의',
+  name: '이름',
 } as const;
 
 export type InputKeys = keyof typeof InputKeyName;
